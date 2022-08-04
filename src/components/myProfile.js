@@ -1,6 +1,9 @@
-import React from 'react';
+import React  from 'react';
+
+
 
 function MyProfile () {
+  
   return (
     <h1>MyProfile page</h1>
   );

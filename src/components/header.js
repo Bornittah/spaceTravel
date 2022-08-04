@@ -1,30 +1,36 @@
 import React from 'react';
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import mainLogo from "../image/home.png";
 
 function Header() {
-  const location = useLocation();
-  const { pathname } = location;
-  const splitLocation = pathname.split('/');
+  let activeStyle = {
+    textDecoration: "underline",
+  };
 
   return (
     <nav>
       <img  src={mainLogo} style={ { width: '50px' } } alt="home"/>
       <NavLink
         to="/"
-        className={splitLocation[1] === '' ? 'active' : 'inactive'}
+        style={({ isActive }) =>
+          isActive ? activeStyle : undefined
+        }
         >
         Rockets|
       </NavLink>
       <NavLink
         to="missions"
-        className={splitLocation[1] === 'missions' ? 'active' : 'inactive'}
+        style={({ isActive }) =>
+          isActive ? activeStyle : undefined
+        }
         >
         Missions|
       </NavLink>
       <NavLink
         to="myprofile"
-        className={splitLocation[1] === 'myprofile' ? 'active' : 'inactive'}
+        style={({ isActive }) =>
+          isActive ? activeStyle : undefined
+        }
         >
         My Profile
       </NavLink>

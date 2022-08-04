@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import App from './App';
-import store from './redux/store';
 import './style.css'
+import store from './redux/store.js'
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <Router>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <App />
     </Router>
+    </Provider>
   </React.StrictMode>
 );

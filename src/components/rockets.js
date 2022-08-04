@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import RocketListing from './rocketListing';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRockets } from '../redux/rockets/rockets'
 
-function Rockets () {
+const Rockets = () => {
+  const rockets = useSelector((state) => state.entities.rockets);
+  console.log(rockets);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getRockets());
+  }, []);
   return (
-    <h1>Rockets page</h1>
+    <section>
+      <ul>
+        {rockets.map((rocket) => (
+          <li key={rocket.rocketId}>
+            <RocketListing rocket={rocket} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
